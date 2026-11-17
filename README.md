@@ -1,4 +1,4 @@
-# 🛡️ ProSAFE: Proactive SOC Assessment & Forecasting Engine
+# ProSAFE: Proactive SOC Assessment & Forecasting Engine
 
 ### Next-Generation Predictive Threat Intelligence, Analyst Fatigue Dynamics & Automated SOAR Readiness Orchestration
 
@@ -6,13 +6,13 @@
 [![ML Engine](https://img.shields.io/badge/ML%20Engine-Sliding--Window%20Threat%20Forecasting-orange.svg)](#core-architectural-innovations)
 [![Human Dynamics](https://img.shields.io/badge/Human%20Dynamics-Cognitive%20Fatigue%20Modeling-teal.svg)](#core-architectural-innovations)
 [![Deployment](https://img.shields.io/badge/Interface-Glassmorphism%20Command%20HUD-00b4d8.svg)](#command-and-control-hud)
-[![License](https://img.shields.io/badge/License-Proprietary%20%2F%20All%20Rights%20Reserved-red.svg)](#-proprietary-intellectual-property--anti-theft-declaration)
+[![License](https://img.shields.io/badge/License-Proprietary%20%2F%20All%20Rights%20Reserved-red.svg)](#proprietary-intellectual-property--anti-theft-declaration)
 
 > **ProSAFE** transforms reactive Security Operations Centers (SOCs) into **anticipatory defense ecosystems** by synthesizing machine learning-driven network attack forecasting with live analyst cognitive fatigue modeling and dynamic SOAR resource allocation.
 
 ---
 
-## 📌 Executive Overview & Problem Statement
+## Executive Overview & Problem Statement
 
 Modern enterprise Security Operations Centers (SOCs) face a catastrophic structural limitation: **they operate purely reactively**. 
 
@@ -26,7 +26,7 @@ Traditional SIEM/SOAR platforms trigger alerts only *after* intrusion signatures
 
 ---
 
-## 🏛️ System Architecture
+## System Architecture
 
 ```mermaid
 flowchart TD
@@ -67,23 +67,23 @@ flowchart TD
 
 ---
 
-## 🌟 Core Architectural Innovations
+## Core Architectural Innovations
 
-### 1. 🔮 Multi-Horizon Threat Trajectory Projection
+### 1. Multi-Horizon Threat Trajectory Projection
 * **Statistical Flow Signatures**: Rather than relying solely on static signature matching, the engine analyzes sliding windows of network flow metadata (packet-to-byte ratios, TCP flag distributions, source/destination entropy).
 * **Calibrated Probabilistic Forecasting**: Evaluates probabilistic likelihood curves across future forecasting horizons (+5 min, +10 min, +15 min), predicting which attack category (DDoS, SSH Brute Force, Port Scan, APT Exfiltration) will breach critical thresholds.
 * **Early Anomaly Detection**: Identifies reconnaissance scans and preliminary handshake anomalies before full-scale volume triggers perimeter intrusion alarms.
 
-### 2. 🧠 Human Factor & Analyst Cognitive Fatigue Dynamics
+### 2. Human Factor & Analyst Cognitive Fatigue Dynamics
 * **Tier-Based Throughput Modeling**: Recognizes that analysts are not identical; processing power is categorized across Tier-1 (Triage, 0.2 units), Tier-2 (Escalation, 0.4 units), and Tier-3 (Threat Hunting, 0.7 units).
 * **Non-Linear Fatigue Penalty**: Models human cognitive exhaustion based on active queue stress and sustained incident throughput. When analyst fatigue exceeds 60%, processing throughput degrades by 25%; above 80%, degradation reaches 50%.
 * **Rest & Recovery Cycles**: Accurately simulates gradual stamina recovery during normal baseline conditions or downtime rotations.
 
-### 3. 🎯 Dynamic SOC Readiness Metric & Deficiency Index
+### 3. Dynamic SOC Readiness Metric & Deficiency Index
 * **Closed-Loop Quantitative Score (0-100%)**: Dynamically synthesizes forecasted attack severity against available queue processing power, active fatigue penalties, and enabled automated countermeasures.
 * **Deficiency Identification**: Automatically detects when a specific threat vector (e.g., an incoming DDoS flood) lacks sufficient tier coverage, instantly flagging the operational gap on the command console.
 
-### 4. ⚡ Preemptive SOAR Playbook Orchestration
+### 4. Preemptive SOAR Playbook Orchestration
 * **Integrated Defensive Playbooks**:
   * **Edge Volumetric Shielding**: Edge rate-limiting and SYN flood dropping.
   * **Authentication Fortress**: Dynamic IP jailing and port firewalling.
@@ -91,14 +91,14 @@ flowchart TD
   * **Exfiltration Containment**: High-speed DNS sinkholing and host isolation.
 * **1-Click Load Rebalancing**: Computes optimal personnel reassignment from quiet queues to high-risk vectors, enabling one-click proactive reallocation before alerts swamp the system.
 
-### 5. 🖥️ Glassmorphism Command & Control HUD
+### 5. Glassmorphism Command & Control HUD
 * **Visual Telemetry**: Circular SVG readiness gauge reflecting live operational health in real time.
 * **Interactive Probability Visualizations**: Multi-series charting of projected threat likelihoods.
 * **Live Incident Injection Switchboard**: Real-time simulation trigger for evaluating response protocols against attack campaigns.
 
 ---
 
-## 📊 Comparative Matrix: Traditional SOC vs. ProSAFE
+## Comparative Matrix: Traditional SOC vs. ProSAFE
 
 | Operational Dimension | Traditional Reactive SOC | ProSAFE Predictive SOC Platform |
 |---|---|---|
@@ -111,7 +111,7 @@ flowchart TD
 
 ---
 
-## 🛠️ System Specifications & Component Overview
+## System Specifications & Component Overview
 
 | Component | Architecture & Technology | High-Level Responsibility |
 |---|---|---|
@@ -124,7 +124,7 @@ flowchart TD
 
 ---
 
-## 🛡️ PROPRIETARY INTELLECTUAL PROPERTY & ANTI-THEFT DECLARATION
+## PROPRIETARY INTELLECTUAL PROPERTY & ANTI-THEFT DECLARATION
 
 ```
 ================================================================================
@@ -144,7 +144,7 @@ This showcase repository, its architectural designs, algorithmic workflows, visu
 
 ---
 
-## 🚫 ANTI-AI TRAINING & DATA MINING PROHIBITION NOTICE
+## ANTI-AI TRAINING & DATA MINING PROHIBITION NOTICE
 
 ```
 ================================================================================
@@ -160,7 +160,7 @@ This showcase repository, its architectural designs, algorithmic workflows, visu
 
 ---
 
-## ⚖️ COPYRIGHT DECLARATION
+## COPYRIGHT DECLARATION
 
 ```
 ================================================================================
