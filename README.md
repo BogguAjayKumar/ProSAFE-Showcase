@@ -1,14 +1,15 @@
 # ProSAFE: Proactive SOC Assessment & Forecasting Engine
 
-### Next-Generation Predictive Threat Intelligence, Analyst Fatigue Dynamics & Automated SOAR Readiness Orchestration
+### Next-Generation Predictive Threat Intelligence (XAI + MITRE ATT&CK), Live Host Posture Scanning, Analyst Fatigue Dynamics & Closed-Loop SOAR Orchestration
 
-[![Architecture](https://img.shields.io/badge/Architecture-Predictive%20SOAR%20%7C%20SOC%20Readiness-blueviolet.svg)](#system-architecture)
-[![ML Engine](https://img.shields.io/badge/ML%20Engine-Sliding--Window%20Threat%20Forecasting-orange.svg)](#core-architectural-innovations)
-[![Human Dynamics](https://img.shields.io/badge/Human%20Dynamics-Cognitive%20Fatigue%20Modeling-teal.svg)](#core-architectural-innovations)
-[![Deployment](https://img.shields.io/badge/Interface-Glassmorphism%20Command%20HUD-00b4d8.svg)](#command-and-control-hud)
+[![Architecture](https://img.shields.io/badge/Architecture-Closed--Loop%20SOAR%20%7C%20SOC%20Readiness-blueviolet.svg)](#system-architecture)
+[![ML Engine](https://img.shields.io/badge/ML%20Engine-Rate--Normalized%20RF%20%2B%20XAI-orange.svg)](#core-architectural-innovations)
+[![Host Sensor](https://img.shields.io/badge/Telemetry-Live%20psutil%20%7C%20Suricata%20EVE%20%7C%20CSV-10b981.svg)](#core-architectural-innovations)
+[![MITRE ATT&CK](https://img.shields.io/badge/Framework-MITRE%20ATT%26CK-ef4444.svg)](#core-architectural-innovations)
+[![Deployment](https://img.shields.io/badge/Interface-Offline--Ready%20Command%20HUD-00b4d8.svg)](#core-architectural-innovations)
 [![License](https://img.shields.io/badge/License-Proprietary%20%2F%20All%20Rights%20Reserved-red.svg)](#proprietary-intellectual-property--anti-theft-declaration)
 
-> **ProSAFE** transforms reactive Security Operations Centers (SOCs) into **anticipatory defense ecosystems** by synthesizing machine learning-driven network attack forecasting with live analyst cognitive fatigue modeling and dynamic SOAR resource allocation.
+> **ProSAFE** transforms reactive Security Operations Centers (SOCs) into **anticipatory defense ecosystems** by uniting rate-normalized ML threat forecasting (with Explainable AI drivers and MITRE ATT&CK mapping), real-time host socket & attack-surface posture scanning, Suricata/CSV log ingestion, analyst cognitive fatigue modeling, and closed-loop SOAR playbooks.
 
 ---
 
@@ -30,71 +31,72 @@ Traditional SIEM/SOAR platforms trigger alerts only *after* intrusion signatures
 
 ```mermaid
 flowchart TD
-    subgraph DataPlane ["1. Network Telemetry & Attack Generation"]
-        RAW[High-Velocity Network Flows]
-        SIM[Multi-Vector Attack Synthesizer\n- DDoS SYN Flood\n- SSH Brute Force\n- Port Scan Recon\n- APT Exfiltration]
-        RAW --> SIM
+    subgraph DataPlane ["1. Multi-Source Telemetry & Exposure Plane"]
+        SIM[Attack Synthesizer\n- DDoS, SSH Brute, Port Scan, APT Exfil]
+        LIVE[Live Host Sensor - psutil\n- Real OS TCP/UDP Connections & NIC I/O]
+        ING[Real Log Ingestion\n- Suricata EVE JSONL, CSV, JSON]
+        POSTURE[Attack-Surface Scanner\n- Listening Ports & Wildcard Exposure]
     end
 
-    subgraph IntelligenceLayer ["2. Predictive ML Forecasting Engine"]
-        SIM --> SLIDE[Sliding-Window Feature Extractor\n- Volumetric Ratios & Flow Rates\n- Protocol & Flag Distribution\n- Cardinality Analysis: IPs & Ports]
-        SLIDE --> FORECAST[Multi-Class Predictive Engine\n- Probabilistic Horizon Projections: +5m, +10m, +15m]
+    subgraph IntelligenceLayer ["2. Rate-Normalized ML, XAI & MITRE Layer"]
+        SLIDE[15s Per-Second Feature Extractor\n- Flow/Byte/Packet Rates, SYN & UDP Ratios]
+        FORECAST[RandomForest Forecaster v2.2\n- +5m, +10m, +15m Probabilities + F1 Eval]
+        XAI[XAI Driver Attribution & MITRE ATT&CK\n- Z-Score Importance + T1498/T1110/T1046/T1048]
+        SLIDE --> FORECAST --> XAI
     end
 
     subgraph HumanFactors ["3. SOC Operations & Human Dynamics"]
-        ANALYSTS[Multi-Tier Analyst Pool\n- Tier 1: Rapid Triage\n- Tier 2: Incident Escalation\n- Tier 3: Advanced Threat Hunting]
-        QUEUES[Specialized Incident Queues\n- Backlog Drain Mathematics]
-        FATIGUE[Cognitive Fatigue Engine\n- Workload Accumulation & Natural Recovery]
+        ANALYSTS[Multi-Tier Analyst Pool\n- Tier 1/2/3 Capacities]
+        QUEUES[Specialized Incident Queues\n- Backlog Drain & Accurate Counting]
+        FATIGUE[Cognitive Fatigue Engine\n- Workload Gain & Break Recovery]
         ANALYSTS <--> QUEUES
         ANALYSTS --> FATIGUE
     end
 
-    subgraph Orchestration ["4. Dynamic Readiness & Automated SOAR"]
-        FORECAST --> EVAL[Dynamic Readiness Scoring Matrix]
-        QUEUES --> EVAL
-        FATIGUE --> EVAL
-        EVAL --> SCORE[Live Quantitative Readiness Index: 0-100%]
-        EVAL --> SOAR[Automated Defensive Recommendations\n- 1-Click Analyst Load Rebalancing\n- Instant SOAR Playbook Execution]
+    subgraph Orchestration ["4. Dynamic Readiness & Closed-Loop SOAR"]
+        EVAL[Dynamic Readiness Matrix\n- Threat Risk - Exposure Penalty + Capacity/Playbooks]
+        SOAR[Closed-Loop Playbooks & Webhooks\n- 80% Flow/Alert Suppression, 1-Click Reallocation\n- CLI Remediation & Slack/Discord Webhooks]
+        STORE[SQLite Persistence & Executive Reports\n- Printable HTML/PDF & Markdown Export]
+        EVAL --> SOAR --> STORE
     end
 
-    subgraph VisualInterface ["5. Tactical Command HUD"]
-        SCORE --> HUD[Glassmorphic Defense Dashboard]
-        SOAR --> HUD
-        FORECAST --> HUD
-        HUD -->|Telemetry & Control| EVAL
-    end
+    SIM --> SLIDE
+    LIVE --> SLIDE
+    ING --> SLIDE
+    XAI --> EVAL
+    POSTURE --> EVAL
+    QUEUES --> EVAL
+    FATIGUE --> EVAL
+    SOAR -->|Throttles Flows & Alerts| SIM
+    SOAR -->|Halves Combat Fatigue| QUEUES
 ```
 
 ---
 
 ## Core Architectural Innovations
 
-### 1. Multi-Horizon Threat Trajectory Projection
-* **Statistical Flow Signatures**: Rather than relying solely on static signature matching, the engine analyzes sliding windows of network flow metadata (packet-to-byte ratios, TCP flag distributions, source/destination entropy).
-* **Calibrated Probabilistic Forecasting**: Evaluates probabilistic likelihood curves across future forecasting horizons (+5 min, +10 min, +15 min), predicting which attack category (DDoS, SSH Brute Force, Port Scan, APT Exfiltration) will breach critical thresholds.
-* **Early Anomaly Detection**: Identifies reconnaissance scans and preliminary handshake anomalies before full-scale volume triggers perimeter intrusion alarms.
+### 1. Rate-Normalized Threat Forecasting & Explainable AI (XAI)
+* **Scale-Invariant Per-Second Telemetry**: Normalizes sliding 15-second windows into per-second rates (`flows_per_sec`, `bytes_per_sec`, `packets_per_sec`, `unique_src_ips_per_sec`, `unique_dst_ports_per_sec`) alongside `syn_ratio`, `udp_ratio`, `avg_bytes_per_flow`, and `avg_packets_per_flow` so short bursts and full windows evaluate consistently.
+* **Calibrated +5m / +10m / +15m Horizon Projections**: Evaluates damped multi-step threat probability curves across DDoS, SSH Brute Force, Port Scan, and APT Exfiltration with persisted `RandomForestClassifier` validation metrics (accuracy and macro-F1).
+* **Feature-Level Attribution (XAI)**: Computes z-score deviations weighted by Random Forest feature importances to tell analysts *why* a threat spiked (e.g., elevated SYN ratio or unique source IP velocity).
 
-### 2. Human Factor & Analyst Cognitive Fatigue Dynamics
-* **Tier-Based Throughput Modeling**: Recognizes that analysts are not identical; processing power is categorized across Tier-1 (Triage, 0.2 units), Tier-2 (Escalation, 0.4 units), and Tier-3 (Threat Hunting, 0.7 units).
-* **Non-Linear Fatigue Penalty**: Models human cognitive exhaustion based on active queue stress and sustained incident throughput. When analyst fatigue exceeds 60%, processing throughput degrades by 25%; above 80%, degradation reaches 50%.
-* **Rest & Recovery Cycles**: Accurately simulates gradual stamina recovery during normal baseline conditions or downtime rotations.
+### 2. Multi-Source Telemetry & Proactive Attack-Surface Posture Scanner
+* **Live Host Sensor (`psutil`)**: Samples real active OS TCP/UDP connections and network interface byte/packet deltas directly from the host into ProSAFE's flow pipeline (`LIVE HOST SENSOR` mode).
+* **Suricata EVE & CSV Log Ingestion**: Parses uploaded or replayed Suricata EVE JSONL, generic JSON, and CSV/CIC-IDS flow captures and re-anchors timestamps into the live forecasting window.
+* **Proactive Port Exposure Scoring**: Scans listening host sockets (`0.0.0.0` / `::` wildcard bindings vs. loopback), flags risky exposed services (`21`, `22`, `23`, `25`, `135`, `139`, `445`, `1433`, `3306`, `3389`, `5432`, `6379`, `8000`, `8080`, `27017`) with process names and hardening guidance, and applies a `0–18 pt` Readiness Exposure Penalty *before* an attack begins.
 
-### 3. Dynamic SOC Readiness Metric & Deficiency Index
-* **Closed-Loop Quantitative Score (0-100%)**: Dynamically synthesizes forecasted attack severity against available queue processing power, active fatigue penalties, and enabled automated countermeasures.
-* **Deficiency Identification**: Automatically detects when a specific threat vector (e.g., an incoming DDoS flood) lacks sufficient tier coverage, instantly flagging the operational gap on the command console.
+### 3. Human Factor & Analyst Cognitive Fatigue Dynamics
+* **Tier-Based Throughput Modeling**: Categorizes processing power across Tier-1 (Triage, `0.2`), Tier-2 (Escalation, `0.4`), and Tier-3 (Threat Hunting, `0.7`) with accurate fractional incident accounting.
+* **Non-Linear Fatigue Penalty**: When analyst fatigue exceeds `60%`, throughput drops by `25%`; above `80%`, degradation reaches `50%`. Rotating fatigued analysts to `Idle / Break` accelerates recovery.
 
-### 4. Preemptive SOAR Playbook Orchestration
-* **Integrated Defensive Playbooks**:
-  * **Edge Volumetric Shielding**: Edge rate-limiting and SYN flood dropping.
-  * **Authentication Fortress**: Dynamic IP jailing and port firewalling.
-  * **Active Recon Shield**: Dynamic port-knocking and silent probe dropping.
-  * **Exfiltration Containment**: High-speed DNS sinkholing and host isolation.
-* **1-Click Load Rebalancing**: Computes optimal personnel reassignment from quiet queues to high-risk vectors, enabling one-click proactive reallocation before alerts swamp the system.
+### 4. Closed-Loop SOAR Playbooks, MITRE ATT&CK & Executive Reporting
+* **Active Flow & Queue Suppression**: Enabling a playbook (`Cloudflare Edge Rate Limiting`, `Fail2Ban & Port 22 Firewalling`, `Dynamic Port Knocking & Dropping`, `DNS Sinkholing & Host Quarantine`) actively drops **80% of matching attack flows** in the telemetry loop, suppresses alert queue ingestion by **80%**, and halves combat fatigue accumulation.
+* **MITRE ATT&CK Enrichment**: Maps active threats to `T1498.001`, `T1110.001`, `T1046`, and `T1048.003` with tactic, kill-chain stage, and defensive controls.
+* **Actionable Ops & Persistence**: Generates copy-ready CLI mitigation commands (`iptables`, `fail2ban-client`, `nft`, `unbound-control`), dispatches Slack/Discord/JSON webhooks, maintains an **SOAR Audit Timeline** backed by **SQLite**, and exports printable **HTML/PDF** and **Markdown** Executive Incident Reports.
 
-### 5. Glassmorphism Command & Control HUD
-* **Visual Telemetry**: Circular SVG readiness gauge reflecting live operational health in real time.
-* **Interactive Probability Visualizations**: Multi-series charting of projected threat likelihoods.
-* **Live Incident Injection Switchboard**: Real-time simulation trigger for evaluating response protocols against attack campaigns.
+### 5. Offline-Ready Glassmorphism Command & Control HUD
+* **Zero-CDN Demo Resilience**: Bundles `Chart.js` and `Lucide` locally so dashboard charts and icons work in air-gapped or offline hackathon venues.
+* **Non-Destructive Live Polling**: Updates analyst `<select>` dropdowns and playbook switches in-place every 2 seconds without disrupting active operator interactions.
 
 ---
 
@@ -102,12 +104,12 @@ flowchart TD
 
 | Operational Dimension | Traditional Reactive SOC | ProSAFE Predictive SOC Platform |
 |---|---|---|
-| **Incident Trigger** | Post-breach threshold alarm | Pre-breach ML probability forecast (5–15 min ahead) |
-| **Workload Balancing** | Manual, ad-hoc during crisis | Automated recommendation based on forecasted threat vectors |
-| **Human Fatigue** | Unmonitored; leads to burnout & errors | Quantified in real-time with automated throughput penalties |
-| **SOAR Execution** | Triggered only after alarms escalate | Preemptively staged or auto-activated prior to attack peak |
-| **Readiness Visibility** | Static audit checklists / quarterly reports | Dynamic, sub-second mathematical readiness score (0–100%) |
-| **KPI Tracking** | Retrospective MTTR / MTTD reports | Real-time rolling MTTD, MTTR, and False-Positive rate telemetry |
+| **Incident Trigger** | Post-breach threshold alarm | Pre-breach ML probability forecast (+5/10/15 min) + XAI drivers |
+| **Telemetry Sources** | Single proprietary SIEM agent | Hybrid Simulator, Live Host Sensor (`psutil`), & Suricata EVE / CSV |
+| **Proactive Posture** | Separate periodic vulnerability scans | Live listening-port exposure scan baked into Readiness Score |
+| **Workload Balancing** | Manual, ad-hoc during crisis | Automated 1-click analyst reallocation by tier & fatigue |
+| **SOAR Execution** | Post-escalation manual tickets | Closed-loop 80% flow/queue suppression + CLI commands + Webhooks |
+| **Compliance & Reporting** | Manual post-incident writeups | Automated MITRE ATT&CK mapping + 1-click HTML/PDF & `.MD` reports |
 
 ---
 
@@ -115,12 +117,12 @@ flowchart TD
 
 | Component | Architecture & Technology | High-Level Responsibility |
 |---|---|---|
-| **Simulation Core** | Asynchronous Event Generation | Generates multi-vector network flow datasets and attack signatures |
-| **ML Predictive Engine** | Ensemble Decision Classification | Computes multi-horizon threat probability matrices |
-| **Operations Engine** | Discrete Time Dynamic Modeling | Tracks analyst queues, tier powers, alert backlogs, and cognitive fatigue |
-| **Readiness Engine** | Quantitative Multi-Criteria Decision Analysis | Computes the real-time 0–100% readiness score and generates SOAR actions |
-| **Backend Service** | High-Performance Asynchronous Python (FastAPI) | Orchestrates background simulation loops and RESTful control APIs |
-| **User Interface** | Responsive Glassmorphism HUD (Chart.js / SVG) | High-contrast telemetry visualization and tactical command interface |
+| **Telemetry & Ingestion Core** | Python Async Loop + Suricata/CSV Parser | Generates attack profiles, ingests EVE/CSV logs, and applies 80% playbook suppression |
+| **Live Host Sensor** | Cross-Platform OS Introspection (`psutil`) | Streams live host TCP/UDP connections and scans listening port exposure |
+| **ML & XAI Engine** | Rate-Normalized `RandomForestClassifier` (`joblib`) | Computes +5/10/15m threat probabilities, F1 metrics, and feature attribution |
+| **Operations & Persistence** | Discrete Time Queue/Fatigue Model + `sqlite3` | Tracks analyst queues, cognitive fatigue, KPIs, and persistent audit timeline |
+| **Readiness, MITRE & Reporting** | Multi-Criteria Readiness Engine + `httpx` | Computes `0–100%` readiness, MITRE ATT&CK mapping, webhooks, and PDF/MD reports |
+| **Backend & Command HUD** | FastAPI + Offline Bundled Chart.js / SVG | Serves REST APIs and an offline-capable glassmorphism SOC dashboard |
 
 ---
 
